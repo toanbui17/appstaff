@@ -1,0 +1,317 @@
+/*header*/
+.header{
+    padding-top: 10rem;
+    background-image: url(https://righttoinformation.wiki/_media/explanations/rti-information.jpg);
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+}
+
+.navbar{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    color: var(--white-color);
+    font-size: 2rem;
+    padding: 3rem 12rem;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.navbar_list_1{
+    display: flex;
+}
+
+.navbar_item{
+
+}
+
+.navbar_link{
+    padding: 1rem 1.2rem;
+    margin: 0;
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.navbar_link:hover{
+    border-bottom: 0.2rem solid var(--white-color);
+}
+
+.navbar_icon{
+
+}
+
+.box_search{
+    position: relative;
+    margin: 0 12rem;
+}
+
+.start{
+
+}
+.search{
+    padding: 0 14rem;
+}
+
+.form_search{
+    display: flex;
+    padding-bottom: 12rem;
+}
+
+.slogan_search{
+    font-size: 2rem;
+    color: var(--white-color);
+    margin-bottom: 0.3rem;
+}
+
+.search_name{
+    width: 77%;
+}
+
+.search_label{
+    width: 100%;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    border: solid var(--white-color);
+    border-radius: 1.1rem;
+}
+
+.search_button{
+    padding: 0 1.5rem;
+    margin: 0 0.2rem;
+    border-radius: 0.5rem;
+    background-color: rgb(57, 164, 227);
+    border: solid var(--white-color);
+    color: var(--white-color);
+}
+.navbar_link_log{
+    font-size: 1rem;
+}
+.navbar_link_log:hover{
+    color: var(--white-color);
+}
+
+
+/*container*/
+.container{
+    
+}
+
+.category{
+    margin: 0;
+    padding: 0 9rem;
+    font-size: 2rem;
+    display: flex;
+    color: var(--text-color);
+    line-height: initial;
+    text-align: inherit;
+}
+
+.category_box{
+    width: 20%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.category_list{
+    background-color: var(--white-color);
+    margin: 3rem 0.5rem;
+    padding: 0.5rem 0;
+    border-radius: 0.2rem;
+}
+
+.category_hearder{
+    padding: 0 5rem;
+}
+
+.list_category{
+    list-style: none;
+    padding: 0.5rem 4rem;
+}
+
+.category_item{
+
+}
+
+.category_item{
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+}
+.category_item:hover{
+    border-bottom: 0.1rem solid var(--black-color);
+}
+
+.category_link{
+    padding: 0.5rem 0.8rem;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.category_name{
+    
+}
+.so{
+    padding-right: 6.5rem;
+}
+
+.category_conten{
+    width: 80%;
+    background: rgba(0, 0, 0, 0.2);
+}
+.home{
+    width: 100%;
+}
+
+.conten_box{
+    
+}
+
+.body_box{
+    background: var(--white-color);
+    min-height: 25rem;
+    margin: 0.5rem;
+    text-align: center;
+    border-radius: 0.2rem;
+}
+.home1{
+    margin: 0.5rem;
+}
+
+.conten_body{
+
+}
+th{
+    padding: 0 2rem;
+    border: 1px solid var(--black-color);
+    margin: 0;
+}
+td{
+    border: 1px solid var(--black-color);
+}
+
+
+/*foooter*/
+.footer{
+    
+}
+.box_footer{
+    color: var(--white-color);
+    font-size: 2rem;
+    padding: 8rem 10rem;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.footer_list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_item{
+
+}
+
+/*login*/
+.forms{
+
+}
+.form_login{
+   
+}
+
+.form_log{
+    border: 1px solid var(--black-color);
+    padding: 1.2rem;
+    margin: 2rem 10rem;
+}
+
+.header_login{
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.flogin{
+    margin-top: 1rem;
+}
+
+.f1{
+    margin-right: 3.2rem;
+}
+
+.f2{
+    margin-right: 9.2rem;
+}
+.f3{
+    font-size: 2rem;
+    margin-right: 16.2rem;
+    margin-top: 1.2rem;
+}
+
+.lable_login{
+    
+}
+.name_input{
+    display: block;
+}
+
+.input{
+    padding-right: 10rem;
+}
+.nameinput{
+    display: flex;
+    margin: 0 15%;
+}
+.input_user{
+    min-width: 30rem;
+    width: 70%;
+}
+
+.password{
+    
+}
+
+.footer_login{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn_input{
+    margin: 1rem 0;
+    font-size: 2rem;
+}
+
+.link_die_login{
+
+    font-size: 1.5rem;
+}
+
+
+/*form login*/
+.login_lo{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.moda_login{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    display: flex;
+}
+.moda_body{
+    padding: 3rem 5rem;
+    background-color: var(--white-color);
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    border-radius: 0.5rem;
+}
+.body_login{
+
+}
