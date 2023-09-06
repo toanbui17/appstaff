@@ -40,13 +40,14 @@ Route::prefix('admin')->middleware('middlewareAuthAdmin')->group(function(){
 });
 
 //staff
-Route::prefix('staff')->middleware('middlewareAuthStaff')->group(function(){
-    Route::get('/',[StaffController::class,'index']);
+Route::prefix('staff')->group(function(){
+    Route::get('/',[StaffController::class,'index'])->middleware('middlewareAuthLogin');
 });
 
 //product
 Route::prefix('product')->group(function(){
-    Route::get('/',[ProductController::class.'index']);
+    Route::get('/',[ProductController::class,'index'])->middleware('middlewareAuthLogin');
+    Route::get('name',[ProductController::class,'showRequest'])->name('nameproduct');
 });
 
 //login

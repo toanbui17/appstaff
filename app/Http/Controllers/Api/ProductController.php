@@ -1,37 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-//usre models product
-use App\Models\product;
-
-
 class ProductController extends Controller
 {
-
-    //khai bao bien de khoi tao phuong thuc trong contruct
-    private $products;
-    //khoi tao construct de khoi tao doi tuong
-    public function __construct() {
-        $this->products = new product();
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        //ten trang
-        $title = 'product';
-
-        //lay het data produc
-        $data = $this->products->getAllProduct();
-
-        return view('product.index',['data'=>$data, 'title'=>$title]);
+        //
     }
 
     /**
@@ -39,7 +20,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-
+        //
+        //ten trang
+        $title = 'add_product';
+        //get add product
+        return view('form.product.form_add',['title'=>$title]);
     }
 
     /**
@@ -56,15 +41,6 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-    }
-
-    //show request
-    public function showRequest(Request $request){
-        //request name product
-        //dd($request);
-        $name = $request->input('name_pd');
-       // dd($product);
-        die;
     }
 
     /**

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->year('year_of_birth_kh');
             $table->char('phone_kh',10);
             $table->string('image_kh');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->char('created_at',10);
+            $table->char('updated_at',10);
         });
     }
 

@@ -41,13 +41,15 @@
                 </nav>
                 <div class="start">
                     <div class="box_search">
-                        <form method="post" data-uia="email-form" class="search">
+                        <form method="get" action="{{route('nameproduct')}}" class="search">
                             <div class="contain_search">
                                 <h3 class="slogan_search">Hay Tim Kiem Va Tan Huong </h3>
-                                <div data-issplitform="false" data-hasmessage="false" class="form_search">
+                                <div class="form_search">
                                     <div class="search_name">
-                                        <input tytle="text" valua="name" class="search_label" placeholder=" Ten San Pham"></input>
+                                        <input tytle="text" name="name_pd" class="search_label" placeholder=" Ten San Pham">
                                     </div>
+                                    <input type="hidden" name="_method" value="get" class="hear_f">
+                                    <input type="hidden" name="_token" value="<?php echo csrf_token()?>" class="tk">
                                     <button role="button" tytle="submit" class="search_button">Tim Kiem</button>
                                 </div>
                             </div>

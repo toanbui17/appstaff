@@ -22,8 +22,8 @@ return new class extends Migration
             $table->char('phone',10);
             $table->string('image');
             $table->char('password',50);
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->char('created_at',10);
+            $table->char('updated_at',10);
         });
     }
 

@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Staff;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
+//use model staff
+use App\Models\staff;
+
+
 class StaffController extends Controller
 {
     /**
@@ -12,7 +17,10 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        //lay data staff
+        $staff = new staff();
+        $data = $staff->getAllStaff();
+        dd($data);
     }
 
     /**
@@ -20,7 +28,8 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        //get add staff
+        return view('');
     }
 
     /**
