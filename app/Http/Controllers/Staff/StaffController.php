@@ -6,21 +6,30 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 
-//use model staff
+//use model staff mvc
 use App\Models\staff;
 
 
 class StaffController extends Controller
 {
+
+    //khai bao bien de khoi tao 
+    private $staff;
+
+    //khoi tao doi tuong staff
+    public function __construct() {
+        $this->staff = new staff();
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //lay data staff
-        $staff = new staff();
-        $data = $staff->getAllStaff();
-        dd($data);
+       $title = 'staff';
+        $data = $this->staff->getAllStaff();
+        
+        return view('staff.index',['title'=>$title,'data'=>$data]);
+
     }
 
     /**

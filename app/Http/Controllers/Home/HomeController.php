@@ -5,16 +5,41 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+//use lop DB(su dung data core thuan)
+use Illuminate\Support\Facades\DB;
+
+//model data product mvc
+use App\Models\product;
+
 class HomeController extends Controller
 {
+    private $product;
+    public function __construct() {
+        $this->product = new product();
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        //tieu de
         $title = 'trang chu';
+
         return view('home.index',['title'=>$title]);
+    }
+
+    //show all tabel product
+    public function showAllProduct(){
+
+        $title = 'san pham';
+
+        //select data tabel product
+        // $product = DB::select("SELECT * FROM product");
+        // dd($product);
+        // die;
+        $data = $this->product->getAllProduct();
+
+        return view('home.home_showProduct',['title'=>$title,'data'=>$data]);
     }
 
     /**

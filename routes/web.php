@@ -30,8 +30,9 @@ Route::get('/', function () {
 });
 
 //home
-Route::prefix('home')->middleware('middlewareAuthAdmin')->group(function(){
+Route::prefix('home')->group(function(){
     Route::get('/',[HomeController::class,'index'])->name('home');
+    Route::get('product',[HomeController::class,'showAllProduct'])->name('home.product');
 });
 
 //admin
@@ -41,13 +42,18 @@ Route::prefix('admin')->middleware('middlewareAuthAdmin')->group(function(){
 
 //staff
 Route::prefix('staff')->group(function(){
-    Route::get('/',[StaffController::class,'index'])->middleware('middlewareAuthLogin');
+    Route::get('/',[StaffController::class,'index'])->middleware('middlewareAuthLogin')->name('staff');
 });
 
 //product
 Route::prefix('product')->group(function(){
-    Route::get('/',[ProductController::class,'index'])->middleware('middlewareAuthLogin');
-    Route::get('name',[ProductController::class,'showRequest'])->name('nameproduct');
+    Route::get('/',[ProductController::class,'index'])->middleware('middlewareAuthLogin')->name('product');
+    Route::get('name',[ProductController::class,'getName'])->name('nameproduct');
+
+    Route::get('add', [ProductController::class,'create'])->middleware('middlewareAuthAdmin')->name('add');
+    //Route::post('add',[ProductController::class,'store'])->middleware('middlewareAuthAdmin')->name('addproduct');
+    //product request
+    Route::post('add',[ProductController::class,'productvalidate'])->middleware('middlewareAuthAdmin')->name('productrequest');
 });
 
 //login

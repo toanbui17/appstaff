@@ -7,10 +7,10 @@
     <div class="category row">
         <div class="category_box col-md-4">
             <div class="category_list">
-                <h3 class="category_hearder">product</h3>
+                <h3 class="category_hearder">staff</h3>
                 <ul class="list_category">
                     <li class="category_item">
-                        <a href="{{route('add')}}" class="category_link"><span class="category_name">Create a product</span></a>
+                        <a href="" class="category_link"><span class="category_name">Create an account</span></a>
                     </li>
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Change password</span></a>
@@ -42,12 +42,13 @@
                                     <thead>
                                         <tr>
                                             <th>stt</th>
-                                            <th>ten</th>
-                                            <th>so luong</th>
-                                            <th>da ban</th>
-                                            <th>hinh anh</th>
-                                            <th>gia</th>
-                                            <th>mo ta</th>
+                                            <th>ten nv</th>
+                                            <th>email nv</th>
+                                            <th>chuc vu</th>
+                                            <th>noi sinh</th>
+                                            <th>nam sinh</th>
+                                            <th>so dt</th>
+                                            <th>hinh anh nv</th>
                                             <th>ngay tao</th>
                                             <th>ngay sua</th>
                                         </tr>
@@ -57,12 +58,13 @@
                                             @foreach ($data as $key => $it)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$it->name_pd}}</td>
-                                            <td>{{$it->quantity_pd}}</td>
-                                            <td>{{$it->sold_pd}}</td>
-                                            <td>{{$it->image_pd}}</td>
-                                            <td>{{$it->price_pd}}</td>
-                                            <td>{{$it->describe_pd}}</td>
+                                            <td>{{$it->name}}</td>
+                                            <td>{{$it->email}}</td>
+                                            <td>{{$it->position}}</td>
+                                            <td>{{$it->place_of_birth}}</td>
+                                            <td>{{$it->year_of_birth}}</td>
+                                            <td>{{$it->phone}}</td>
+                                            <td>{{$it->image}}</td>
                                             <td>{{$it->created_at}}</td>
                                             <td>{{$it->updated_at}}</td>
                                             <td>delete</td>

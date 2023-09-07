@@ -98,7 +98,7 @@
 
 /*container*/
 .container{
-    
+    width: 100%;
 }
 
 .category{
@@ -172,7 +172,7 @@
     background: var(--white-color);
     min-height: 25rem;
     margin: 0.5rem;
-    text-align: center;
+    text-align: -webkit-center;
     border-radius: 0.2rem;
 }
 .home1{
@@ -189,6 +189,7 @@ th{
 }
 td{
     border: 1px solid var(--black-color);
+    text-align: -webkit-center;
 }
 
 
@@ -310,6 +311,9 @@ td{
     position: relative;
     z-index: 2;
     border-radius: 0.5rem;
+}
+.lg{
+    margin: 0;
 }
 .body_login{
 

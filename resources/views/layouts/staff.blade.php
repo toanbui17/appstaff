@@ -19,23 +19,23 @@
                     <div class="navbar_list_1">
                         <div class="navbar_item">
                             <a href="" class="navbar_link iconlg">
-                                <span class="navbar_icon">Gioi Thieu</span>
-                            </a>
-                        </div>
-                        <div class="navbar_item">
-                            <a href="" class="navbar_link iconlg">
                                 <span class="navbar_icon">Tin Tuc</span>
                             </a>
                         </div>
                         <div class="navbar_item">
-                            <a href="{{route('home.product')}}" class="navbar_link iconlg">
+                            <a href="" class="navbar_link iconlg">
+                                <span class="navbar_icon">Khach Hang</span>
+                            </a>
+                        </div>
+                        <div class="navbar_item">
+                            <a href="{{route('homeproduct')}}" class="navbar_link iconlg">
                                 <span class="navbar_icon">San Pham</span>
                             </a>
                         </div>
                         <div class="navbar_item">
                             <!--dung ham route de goi url bang name route-->
-                            <a href="{{route('login')}}" class="navbar_link iconlg">
-                                <span class="navbar_icon">Dang Nhap</span>
+                            <a href="" class="navbar_link iconlg">
+                                <span class="navbar_icon">STAFF</span>
                             </a>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
         </header>
         <div class="container">
             <div class="category row">
-                @yield('conten')
+                @yield('conten_staff')
             </div>
         </div>
         <footer class="footer">

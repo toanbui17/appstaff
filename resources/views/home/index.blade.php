@@ -20,5 +20,6 @@
             </div>
         </div>
     </div>
+    @yield('conten_login')
 </div>
 @endsection

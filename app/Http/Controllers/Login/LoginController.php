@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProductRequest;
 use Illuminate\Http\Request;
 
 //lop doi  tuong databaase
 use Illuminate\Support\Facades\DB;
+
+//use login request
+use App\Http\Requests\Staff\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -34,8 +38,11 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         //dang nhap va kiem tra dang nhap
-        $account = $request->all()['email'];
-        $name = DB::table('staff')->where('email', 'phamvana@gmail.com')->value('password');
+        $account = $request->all();
+        $ten = $account['email'];
+        $name = DB::table('staff')->where('email', 'LIKE', '%($name)%')->get();
+        dd($name);
+        die;
         if ($account == $name) {
             dd($name);    
         }else{

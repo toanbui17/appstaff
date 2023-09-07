@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PostRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
 
     //thuc hien kiem tra validate
@@ -13,9 +13,10 @@ class PostRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
+    //cap quyen truy cap true = co, false = khong
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -30,11 +31,11 @@ class PostRequest extends FormRequest
             'name_pd'=>'required',
             'quantity_pd'=>'required',
             'sold_pd'=>'required',
-            'image_pd' => '|file|size:512',
-            'price_pd'=>'float|required',
+            'image_pd' => 'file',
+            'price_pd'=>'required',
             'describe_pd'=>'required',
-            'created_at' => 'date_format:y-m-d',
-            'updated_at' => 'date_format:y-m-d',
+            'created_at' => 'min:10',
+            'updated_at' => 'min:10',
         ];
     }
 
@@ -43,7 +44,9 @@ class PostRequest extends FormRequest
         //khoi to messages
         return[
             'requirred'=>'khong duoc de rong!',
-            'date'=>'nhap lai ngay thang',
+            //'file'=>'khong phai file anh',
+            //'double:8.2'=>'khong dung gia',
+            'min:10'=>'nhap lai ngay thang'
         ];
     }
     
@@ -64,7 +67,7 @@ class PostRequest extends FormRequest
             //chuyen huong khi k co  quyen
     public function failedAuthorization(){
         //chuyen huong
-        throw new HttpResponseException(redirect('home')->with('msg', 'ban khong co quyen truy'));
+        //throw new HttpResponseException(redirect('home')->with('msg', 'ban khong co quyen truy'));
         
     }
 }

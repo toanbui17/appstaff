@@ -1,53 +1,34 @@
-@extends('layouts.admin')
+@extends('layouts.base')
 @section('title')
     {{$title}}
 @endsection
-@section('conten_ad')
-<div class="container">
-    <div class="category row">
-        <div class="category_box col-md-4">
-            <div class="category_list">
-                <h3 class="category_hearder">product</h3>
-                <ul class="list_category">
-                    <li class="category_item">
-                        <a href="{{route('add')}}" class="category_link"><span class="category_name">Create a product</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Change password</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Forgot password</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Edit information</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name so">Sign out</span></a>
-                    </li>
-                </ul>
-            </div>
+@section('conten')
+<div class="category_conten col-md-12 home">
+    <div class="conten_box">
+        <div class="conten_hear">
+            <h3 class="conten_name">
+                {{request()->path()}}
+            </h3>
         </div>
-        <div class="category_conten col-md-8">
-            <div class="conten_box">
-                <div class="conten_hear">
-                    <h3 class="conten_name">
-                        {{request()->path()}}
-                    </h3>
-                </div>
+        <div class="body_box home1">
+            <div class="conten_body">
+                <p class="admin_body">wellcome to app database manager</p>
+                <!-- thong bao khong co quyen then vao data tai staffRequest -->
                 <div class="body_box">
                     <div class="conten_body">
                         <div class="box_tb">
                             <div class="box_table">
-                                <table class="staff_table">
+                                <table class="staff_table body_box">
                                     <thead>
                                         <tr>
                                             <th>stt</th>
-                                            <th>ten</th>
-                                            <th>so luong</th>
-                                            <th>da ban</th>
-                                            <th>hinh anh</th>
-                                            <th>gia</th>
-                                            <th>mo ta</th>
+                                            <th>ten sp</th>
+                                            <th>sl con</th>
+                                            <th>sl ban</th>
+                                            <th>hinh anh sp</th>
+                                            <th>gia sp</th>
+                                            <th>mo ta sp</th>
+                                            <!-- <th>anh</th> -->
                                             <th>ngay tao</th>
                                             <th>ngay sua</th>
                                         </tr>
@@ -65,8 +46,7 @@
                                             <td>{{$it->describe_pd}}</td>
                                             <td>{{$it->created_at}}</td>
                                             <td>{{$it->updated_at}}</td>
-                                            <td>delete</td>
-                                            <td>edit</td>
+                                            <td>view</td>
                                         </tr>
                                         @endforeach
                                         @else
@@ -80,6 +60,9 @@
                         </div>
                     </div>
                 </div>
+                @if (session('msg'))
+                    <span class="error">{{session('msg')}}</span>
+                @endif
             </div>
         </div>
     </div>

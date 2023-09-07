@@ -1,8 +1,8 @@
-@extends('layouts.base')
+@extends('layouts.admin')
 @section('title')
     {{$title}}
 @endsection
-@section('conten')
+@section('conten_ad')
 <div class="container">
     <div class="category row">
         <div class="category_box col-md-4">
@@ -10,7 +10,7 @@
                 <h3 class="category_hearder">account</h3>
                 <ul class="list_category">
                     <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Create an account</span></a>
+                        <a href="{{route('add')}}" class="category_link"><span class="category_name">Create a product</span></a>
                     </li>
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Change password</span></a>
@@ -38,45 +38,50 @@
                     <div class="conten_body">
                         <h1>app product</h1>
                         <!-- kiem tra error -->
-                       @error('msg')
+                        @error('msg')
                             <div class="error">
                                 {{$message}}
                             </div>
                         @enderror
-                        <form action="{{route('addstaff')}}" method="post" class="" enctype="multipart/form-data" id="addstaff">
+                        <form action="{{route('productrequest')}}" method="post" class="" enctype="multipart/form-data" id="addstaff">
                             <div class="form">
                                 <div class="nameinput">ten san pham</div>
-                                <input type="text" name="name_pd" class="input_user"></br>
+                                <input type="text" name="name_pd" class="input_user">
                                 @error('name_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">so luong san pham con</div>
-                                <input type="text" name="quantity_pd" class="input_user"></br>
-                                @error('quantity')
+                                <input type="text" name="quantity_pd" class="input_user">
+                                @error('quantity_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">so luong san pham da ban</div>
-                                <input type="text" name="sold_pd" class="input_user"></br>
+                                <input type="text" name="sold_pd" class="input_user">
                                 @error('sold_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
+                                <div class="nameinput">hinh anh san pham da ban</div>
+                                <input type="file" name="image_pd" class="input_user">
+                                @error('image_pd')
+                                    <span class="error">{{$message}}</span>
+                                @enderror
                                 <div class="nameinput">gia san pham</div>
-                                <input type="fload" name="price_pd" class="input_user"></br>
-                                @error('price')
+                                <input type="fload" name="price_pd" class="input_user">
+                                @error('price_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">mo ta san pham</div>
-                                <input type="text" name="describe_pd" class="input_user"></br>
+                                <input type="text" name="describe_pd" class="input_user">
                                 @error('describe_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">created at</div>
-                                <input type="date" name="created_at" class="input_user"></br>
+                                <input type="date" name="created_at" class="input_user">
                                 @error('created_at')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">updated at</div>
-                                <input type="date" name="updated_at" class="input_user"></br>
+                                <input type="date" name="updated_at" class="input_user">
                                 @error('updated_at')
                                     <span class="error">{{$message}}</span>
                                 @enderror
