@@ -33,8 +33,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if(!empty($data))
-                                            @foreach ($data as $key => $it)
+                                        @if(!empty($dataName))
+                                            @foreach ($dataName as $key => $it)
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{$it->name_pd}}</td>

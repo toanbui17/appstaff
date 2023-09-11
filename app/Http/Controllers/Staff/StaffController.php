@@ -25,7 +25,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-       $title = 'staff';
+        $title = 'staff';
         $data = $this->staff->getAllStaff();
         
         return view('staff.index',['title'=>$title,'data'=>$data]);

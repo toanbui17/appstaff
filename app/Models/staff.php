@@ -8,13 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 //use DB
 use Illuminate\Support\Facades\DB;
 
-class staff extends Model
+
+
+class Staff extends Model
 {
     use HasFactory;
 
     //get all data staff
     public function getAllStaff(){
-        $staff = DB::select('SELECT * FROM staff ORDER BY created_at DESC');
+        $staff = DB::table('staff')->orderBy('id', 'asc')->get();
+        return $staff;
+    }
+
+    //search email
+    public function getEmail($email){
+        $staff = DB::table('staff')->where('email', "$email")->get();
         return $staff;
     }
 

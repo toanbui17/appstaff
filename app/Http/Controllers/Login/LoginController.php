@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ProductRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-//lop doi  tuong databaase
-use Illuminate\Support\Facades\DB;
+//use staff model
+use App\Models\Staff;
 
 //use login request
 use App\Http\Requests\Staff\LoginRequest;
 
 class LoginController extends Controller
 {
+    private $Staffs;
+
+    public function __construct() {
+        $this->Staffs = new Staff();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -35,20 +40,14 @@ class LoginController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
         //dang nhap va kiem tra dang nhap
-        $account = $request->all();
-        $ten = $account['email'];
-        $name = DB::table('staff')->where('email', 'LIKE', '%($name)%')->get();
-        dd($name);
+        //$data = $request->validated();
+        $pwdt = Hash::make($request->password);
+        dd($pwdt);
         die;
-        if ($account == $name) {
-            dd($name);    
-        }else{
-            return redirect(route('home'));
-        }
-        
+
     }
 
     /**

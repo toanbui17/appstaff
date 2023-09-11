@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 //model data product mvc
-use App\Models\product;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
-    private $product;
+    private $Products;
     public function __construct() {
-        $this->product = new product();
+        $this->Products = new Product();
     }
     /**
      * Display a listing of the resource.
@@ -33,11 +33,7 @@ class HomeController extends Controller
 
         $title = 'san pham';
 
-        //select data tabel product
-        // $product = DB::select("SELECT * FROM product");
-        // dd($product);
-        // die;
-        $data = $this->product->getAllProduct();
+        $data = $this->Products->getAllProduct();
 
         return view('home.home_showProduct',['title'=>$title,'data'=>$data]);
     }

@@ -28,7 +28,8 @@ class ProductRequest extends FormRequest
     {
         return [
             //khai bao roles
-            'name_pd'=>'required',
+            //su dung unique lien ket voi bang de kiem tra su ton tai
+            'name_pd'=>'required|unique:product',
             'quantity_pd'=>'required',
             'sold_pd'=>'required',
             'image_pd' => 'file',
@@ -43,10 +44,11 @@ class ProductRequest extends FormRequest
     {
         //khoi to messages
         return[
-            'requirred'=>'khong duoc de rong!',
+            'required'=>'khong duoc de rong!',
             //'file'=>'khong phai file anh',
             //'double:8.2'=>'khong dung gia',
-            'min:10'=>'nhap lai ngay thang'
+            'min:10'=>'nhap lai ngay thang',
+            'unique'=>'ten da ton tai'
         ];
     }
     

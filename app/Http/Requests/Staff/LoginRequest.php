@@ -32,7 +32,7 @@ class LoginRequest extends FormRequest
         return[
             'required'=>'chua nhap thong tin',
             'email:rfc,dns'=>'khong dung dang email',
-            'current_password'=>'ma khau khong dung'
+            //'current_password'=>'ma khau khong dung'
         ];
     }
 

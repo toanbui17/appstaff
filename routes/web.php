@@ -32,7 +32,7 @@ Route::get('/', function () {
 //home
 Route::prefix('home')->group(function(){
     Route::get('/',[HomeController::class,'index'])->name('home');
-    Route::get('product',[HomeController::class,'showAllProduct'])->name('home.product');
+    Route::get('product',[HomeController::class,'showAllProduct'])->name('homeProduct');
 });
 
 //admin
@@ -48,16 +48,20 @@ Route::prefix('staff')->group(function(){
 //product
 Route::prefix('product')->group(function(){
     Route::get('/',[ProductController::class,'index'])->middleware('middlewareAuthLogin')->name('product');
-    Route::get('name',[ProductController::class,'getName'])->name('nameproduct');
+    Route::get('name',[ProductController::class,'getName'])->name('productName');
 
-    Route::get('add', [ProductController::class,'create'])->middleware('middlewareAuthAdmin')->name('add');
+    Route::get('add', [ProductController::class,'create'])->middleware('middlewareAuthAdmin')->name('productAdd');
     //Route::post('add',[ProductController::class,'store'])->middleware('middlewareAuthAdmin')->name('addproduct');
     //product request
-    Route::post('add',[ProductController::class,'productvalidate'])->middleware('middlewareAuthAdmin')->name('productrequest');
+    Route::post('add',[ProductController::class,'productValidate'])->middleware('middlewareAuthAdmin')->name('productValidate');
+
+    //product edit
+    Route::get('edit{id}',[ProductController::class,'edit'])->middleware('middlewareAuthAdmin')->name('productEdit');
+    Route::post('edit{id}',[ProductController::class,'update'])->middleware('middlewareAuthAdmin')->name('productUpdate');
 });
 
 //login
 Route::prefix('login')->group(function(){
     Route::get('/',[LoginController::class,'index'])->name('login');
-    Route::post('/',[LoginController::class,'store'])->name('login.get');
+    Route::post('email',[LoginController::class,'store'])->name('loginGet');
 });

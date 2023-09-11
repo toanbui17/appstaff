@@ -42,7 +42,7 @@
                 </nav>
                 <div class="start">
                     <div class="box_search">
-                        <form method="get" action="{{route('nameproduct')}}" class="search">
+                        <form method="get" action="{{route('productName')}}" class="search">
                             <div class="contain_search">
                                 <h3 class="slogan_search">Hay Tim Kiem Va Tan Huong </h3>
                                 <div class="form_search">

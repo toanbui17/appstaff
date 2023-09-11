@@ -13,7 +13,7 @@
                             {{$message}}
                         </div>
                     @enderror
-                    <form action="{{route('login.get')}}" method="post" class="">
+                    <form action="{{route('loginGet')}}" method="post" class="">
                         <div class="form">
                             <label for="" class="name_input">tai khoan email</label>
                             <input type="email" name="email" class="input_user" value="{{old('name')}}">

@@ -10,7 +10,7 @@
                 <h3 class="category_hearder">product</h3>
                 <ul class="list_category">
                     <li class="category_item">
-                        <a href="{{route('add')}}" class="category_link"><span class="category_name">Create a product</span></a>
+                        <a href="{{route('productAdd')}}" class="category_link"><span class="category_name">Create a product</span></a>
                     </li>
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Change password</span></a>
@@ -37,6 +37,12 @@
                 <div class="body_box">
                     <div class="conten_body">
                         <div class="box_tb">
+                        <!-- kiem tra error -->
+                        @error('msg')
+                        <div class="error">
+                            {{$message}}
+                        </div>
+                        @enderror
                             <div class="box_table">
                                 <table class="staff_table">
                                     <thead>
@@ -65,8 +71,8 @@
                                             <td>{{$it->describe_pd}}</td>
                                             <td>{{$it->created_at}}</td>
                                             <td>{{$it->updated_at}}</td>
-                                            <td>delete</td>
-                                            <td>edit</td>
+                                            <td><a href="" class="delete">delete</a></td>
+                                            <td><a href="{{route('productEdit',['id'=>$it->id])}}" class="edit">edit</a></td>
                                         </tr>
                                         @endforeach
                                         @else

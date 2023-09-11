@@ -10,7 +10,7 @@
                 <h3 class="category_hearder">account</h3>
                 <ul class="list_category">
                     <li class="category_item">
-                        <a href="{{route('productAdd')}}" class="category_link"><span class="category_name">Create a product</span></a>
+                        <a href="{{route('ProductAdd')}}" class="category_link"><span class="category_name">Create a product</span></a>
                     </li>
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Change password</span></a>
@@ -43,7 +43,7 @@
                                 {{$message}}
                             </div>
                         @enderror
-                        <form action="{{route('productValidate')}}" method="post" class="" enctype="multipart/form-data" id="addstaff">
+                        <form action="{{route('productUpdate')}}" method="post" class="" enctype="multipart/form-data" id="addstaff">
                             <div class="form">
                                 <div class="nameinput">ten san pham</div>
                                 <input type="text" name="name_pd" class="input_user">
@@ -78,7 +78,7 @@
                                 <input type="hidden" name="_method" value="post" class="hear_f">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}" class="tk">
                             </div>
-                            <button type="submit" class="btn_input">add product</button>
+                            <button type="submit" class="btn_input">update pproduct</button>
                         </form>
                     </div>
                 </div>
