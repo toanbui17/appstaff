@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //tao bang staff
-        Schema::create('staff',function(Blueprint $table){
+        Schema::create('personnels', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('position');
-            $table->string('place_of_birth');
-            $table->year('year_of_birth');
-            $table->char('phone',10);
+            $table->inter('lever');
             $table->string('image');
-            $table->char('password',50);
-            $table->char('created_at',10);
-            $table->char('updated_at',10);
+            $table->string('number_phone');
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
@@ -32,7 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //xoa bang staff
-        Schema::drop('staff');
+        Schema::drop('personnels');
     }
 };

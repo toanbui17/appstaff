@@ -9,19 +9,13 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 //use form request product
-use App\Http\Requests\Admin\ProductRequest;
+//use App\Http\Requests\Admin\ProductRequest;
+
+use Carbon\Carbon;
 
 
 class ProductController extends Controller
 {
-
-    //khai bao bien de khoi tao phuong thuc trong contruct
-    private $Products;
-    //khoi tao construct de khoi tao doi tuong
-    public function __construct() {
-        $this->Products = new Product();
-    }
-
     /**
      * Display a listing of the resource.
      */
@@ -32,7 +26,10 @@ class ProductController extends Controller
         $title = 'product';
 
         //lay het data produc
-        $data = $this->Products->getAllProduct();
+        $data = Product::where('id', '>', '0')
+        ->orderBy('created_at','desc')
+        ->limit(10)
+        ->get();
 
         return view('product.index',['data'=>$data,'title'=>$title]);
     }
@@ -40,10 +37,10 @@ class ProductController extends Controller
     //select name product
     public function getName(Request $request){
 
-        $title = 'produc '.$request->all()['name_pd'];
+        $title = 'produc '.$request->all()['key_word'];
 
-        $name = $request->all()['name_pd'];
-        $dataName = $this->Products->getByName($name);
+        $name = $request->all()['key_word'];
+        $dataName = Product::where('name_pd','like',"%$name%")->orderBy('created_at','desc')->get();
         return view('home.home_nameProduct',['title'=>$title,'dataName'=>$dataName]);
     }
 
@@ -61,59 +58,37 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    /*
     public function store(Request $request)
     {
-        //
-        //validator
-        $rules=[
-            //khai bao roles
-            'name_pd'=>'required',
-            'quantity_pd'=>'required',
-            'sold_pd'=>'required',
-            'image_pd' => 'required|file|size:5120',
-            'price_pd'=>'required|double:8.2',
-            'describe_pd'=>'required',
-            'created_at' => 'required|date_format:dd-mm-yyyy|min:10',
-            'updated_at' => 'required|date_format:dd-mm-yyyy|min:10',
-        ];
-        
-        $messages=[
-            //khai bbao messages
-            'requirred'=>'khong duoc de rong!',
-            'file'=>'khong phai file anh',
-            'double:8.2'=>'khong dung gia',
-            'min:10'=>'nhap lai ngay thang'
-        ];
-    
-        $request->validate($rules,$messages);
-    }*/
+        $file               = $request->image_pd;
+        $filename           = 'company-logo-' . time() . '.' . $file->getClientOriginalExtension();
+        //$path = $file->storeAs('public/uload', $filename);
+        //Lưu file vào thư mục public/upload/
+		$destinationPath    = public_path('/upload');
+		$file->move($destinationPath, $filename);
 
-    //foem validator
-    public function productValidate(ProductRequest $request){
-
-        //khong doc duoc validated date
-        $data= $request->validated([
-            'name_pd'=>['required'],
-            'quantity_pd'=>['required'],
-            'sold_pd'=>['required'],
-            'image_pd' => ['required|file|size:5120'],
-            'price_pd'=>['required|double:8.2'],
-            'describe_pd'=>['required'],
-            'created_at' => ['required|date_format:dd-mm-yyyy|min:10'],
-            'updated_at' => ['required|date_format:dd-mm-yyyy|min:10'],
+        $request->validate([
+            'name_pd'           => 'required|unique:product',
+            'quantity_pd'       => 'required',
+            'sold_pd'           => 'required',
+            'image_pd'          => 'image|mimes:jpg,bmp,png',
+            'price_pd'          => 'required',
+            'describe_pd'       => 'required',
         ]);
 
-        dd($data);
-        die;
+        $product = new Product;
 
-        $this->Products->addProduct($data);
+        $product->name_pd       = $request->name_pd;
+        $product->quantity_pd   = $request->quantity_pd;
+        $product->sold_pd       = $request->sold_pd;
+        $product->image_pd      = $filename;
+        $product->price_pd      = $request->price_pd;
+        $product->describe_pd   = $request->describe_pd;
+
+        $product->save();
 
         return redirect()->route('product');
     }
-
-
-
 
     /**
      * Display the specified resource.
@@ -123,24 +98,18 @@ class ProductController extends Controller
         //
     }
 
-    //show request
-    public function showRequest(Request $request){
-        //request name product
-        //dd($request);
-        $name = $request->input('name_pd');
-       // dd($product);
-        die;
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id = '0')
+    public function edit($id)
     {
         ////ten trang
         $title = 'edit_product';
+
         if (!empty($id)) {
-            $dataId = $this->Products->getById($id);
+            $dataId = Product::find($id);
+            dd($dataId);
+            die;
             //kiem tra con ton tai khong
             if (!empty($dataId[$id])) {
                 $dataId = $dataId[$id];
@@ -151,7 +120,7 @@ class ProductController extends Controller
             return redirect()->route('product')->with('msg','san pham khong ton tai');
         }
         //get add product
-        return view('form.product.form_edit',['title'=>$title,'dataId'=>$dataId]);
+        //return view('form.product.form_edit',['title'=>$title,'dataId'=>$dataId]);
     }
 
     /**
@@ -167,6 +136,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //xoa product
+        Product::deleteProduct($id);
+        return redirect()->route('product')->with('msg','san pham da xoa');
     }
+    
 }

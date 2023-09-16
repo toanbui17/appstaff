@@ -13,8 +13,9 @@
                             {{$message}}
                         </div>
                     @enderror
-                    <form action="{{route('loginGet')}}" method="post" class="">
+                    <form action="{{route('loginPost')}}" method="post" class="">
                         <div class="form">
+                            @csrf
                             <label for="" class="name_input">tai khoan email</label>
                             <input type="email" name="email" class="input_user" value="{{old('name')}}">
                             @error('email')
@@ -26,7 +27,7 @@
                                 <span class="error lg">{{$message}}</span>
                             @enderror
                             <input type="hidden" name="_method" value="post" class="hear_f">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}" class="tk">
+                            <input type="hidden" name="remember_token" value="{{csrf_token()}}" class="tk">
                         </div>
                         <div class="footer_login">
                             <button type="submit" class="btn_input">login</button>

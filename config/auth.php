@@ -65,6 +65,11 @@ return [
             'model' => App\Models\User::class,
         ],
 
+
+        'auths' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Auth::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -111,5 +116,28 @@ return [
     */
 
     'password_timeout' => 10800,
+
+
+
+    //==============================================================================
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admin',
+    ],
+
+    'user' => [
+        'driver' => 'session',
+        'provider' => 'user',
+    ],
+
+    'company' => [
+        'driver' => 'session',
+        'provider' => 'company',
+    ],
+
+    'employee' => [
+        'driver' => 'session',
+        'provider' => 'employee',
+    ],
 
 ];

@@ -10,59 +10,95 @@
 </head>
 <body>
     <div class="app">
-        <header class="header">
+        <header class="header_ad">
             <div class="grid">
-                <nav class="navbar">
-                    <div class="navbar_list">
-                        <div class="navbar_item"><h1>Quan Ly Nhan Su</h1></div>
+                <nav class="navbar_ad">
+                    <div class="navbar_list_ad">
+                        <div class="navbar_item_ad"><h1>Quan Ly Nhan Su</h1></div>
                     </div>
-                    <div class="navbar_list_1">
-                        <div class="navbar_item">
-                            <a href="" class="navbar_link iconlg">
-                                <span class="navbar_icon">Tin Tuc</span>
-                            </a>
+                    <div class="start_ad">
+                        <div class="navbar_list_ad">
+                            <div class="navbar_item_ad">
+                                <a href="{{route('homeAdmin')}}" class="navbar_link iconlg">
+                                    <span class="navbar_icon_ad">Home</span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="navbar_item">
-                            <a href="{{route('staff')}}" class="navbar_link iconlg">
-                                <span class="navbar_icon">Nhan vien</span>
-                            </a>
+                        <div class="navbar_list_ad">
+                            <div class="navbar_item_ad">
+                                <a href="" class="navbar_link iconlg">
+                                    <span class="navbar_icon_ad">Manager</span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="navbar_item">
-                            <a href="{{route('product')}}" class="navbar_link iconlg">
-                                <span class="navbar_icon">San Pham</span>
-                            </a>
-                        </div>
-                        <div class="navbar_item">
-                            <!--dung ham route de goi url bang name route-->
-                            <a href="" class="navbar_link iconlg">
-                                <span class="navbar_icon">ADMIN</span>
-                            </a>
+                        <div class="box_search_ad">
+                            <form method="get" action="{{route('productName')}}" class="search_ad">
+                                <div class="contain_search_ad">
+                                    <div class="form_search_ad">
+                                        <div class="search_name_ad">
+                                            <input tytle="text" name="key_word" class="search_label_ad" placeholder=" Ten San Pham">
+                                        </div>
+                                        <div class="boxx_btn">
+                                            <button role="button" tytle="submit" class="search_button_ad">Tim Kiem</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </nav>
-                <div class="start">
-                    <div class="box_search">
-                        <form method="get" action="{{route('productName')}}" class="search">
-                            <div class="contain_search">
-                                <h3 class="slogan_search">Hay Tim Kiem Va Tan Huong </h3>
-                                <div class="form_search">
-                                    <div class="search_name">
-                                        <input tytle="text" name="name_pd" class="search_label" placeholder=" Ten San Pham">
-                                    </div>
-                                    <button role="button" tytle="submit" class="search_button">Tim Kiem</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
         </header>
-        <div class="container">
-            <div class="category row">
+        <div class="container_ad">
+            <div class="category_ad">
+                <div class="category_list_ad">
+                    <ul class="category_ad_list">
+                        <a href="" class="category_link_ad">
+                            <li class="category_item_ad">
+                                tai khoan
+                            </li>
+                        </a>
+                        <a href="" class="category_link_ad">
+                            <li class="category_item_ad">
+                                tong quan 
+                            </li>
+                        </a>    
+                        <a href="{{route('create')}}" class="category_link_ad">
+                            <li class="category_item_ad">
+                                tao tai khoan
+                            </li>
+                        </a>
+                        <a href="{{route('product')}}" class="category_link_ad">
+                            <li class="category_item_ad">
+                                san pham
+                            </li>
+                        </a>
+                        <a href="" class="category_link_ad">
+                            <li class="category_item_ad">
+                                nhan vien
+                            </li>
+                        </a>
+                        <a href="" class="category_link_ad">
+                            <li class="category_item_ad">
+                                thay doi mat khau
+                            </li>
+                        </a>
+                        <a href="" class="category_link_ad">
+                            <li class="category_item_ad">
+                                chinh sua thong tin 
+                            </li>
+                        </a>
+                        <a href="{{route('logOut')}}" class="category_link_ad">
+                            <li class="category_item_ad">
+                                dang xuat
+                            </li>
+                        </a>
+                    </ul>
+                </div>
                 @yield('conten_ad')
             </div>
         </div>
-        <footer class="footer">
+        {{-- <footer class="footer">
             <div class="box_footer">
                 <div class="footer_list">
                     <div class="footer_item">
@@ -76,7 +112,7 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> --}}
     </div>
 </body>
 </html>

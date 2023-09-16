@@ -43,38 +43,42 @@
                                 {{$message}}
                             </div>
                         @enderror
+                        @if(!empty($data))
+                        @foreach ($dataId as $key => $it)
                         <form action="{{route('productUpdate')}}" method="post" class="" enctype="multipart/form-data" id="addstaff">
                             <div class="form">
                                 <div class="nameinput">ten san pham</div>
-                                <input type="text" name="name_pd" class="input_user">
+                                <input type="text" name="name_pd" value="{{$it->name_pd}}" class="input_user">
                                 @error('name_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">so luong san pham con</div>
-                                <input type="text" name="quantity_pd" class="input_user">
+                                <input type="text" name="quantity_pd" value="{{$it->quantity_pd}}" class="input_user">
                                 @error('quantity_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">so luong san pham da ban</div>
-                                <input type="text" name="sold_pd" class="input_user">
+                                <input type="text" name="sold_pd" value="{{$it->sold_pd}}" class="input_user">
                                 @error('sold_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">hinh anh san pham da ban</div>
-                                <input type="file" name="image_pd" class="input_user">
+                                <input type="file" name="image_pd" value="{{$it->image_pd}}" class="input_user">
                                 @error('image_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">gia san pham</div>
-                                <input type="fload" name="price_pd" class="input_user">
+                                <input type="fload" name="price_pd" value="{{$it->price_pd}}" class="input_user">
                                 @error('price_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <div class="nameinput">mo ta san pham</div>
-                                <input type="text" name="describe_pd" class="input_user">
+                                <input type="text" name="describe_pd"value="{{$it->describe_pd}}" class="input_user">
                                 @error('describe_pd')
                                     <span class="error">{{$message}}</span>
                                 @enderror
+                                @endforeach
+                                @endif
                                 <input type="hidden" name="_method" value="post" class="hear_f">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}" class="tk">
                             </div>

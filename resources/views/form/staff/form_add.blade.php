@@ -10,7 +10,7 @@
                 <h3 class="category_hearder">account</h3>
                 <ul class="list_category">
                     <li class="category_item">
-                        <a href="{{route('productAdd')}}" class="category_link"><span class="category_name">Create a product</span></a>
+                        <a href="{{route('staffAdd')}}" class="category_link"><span class="category_name">Create an account</span></a>
                     </li>
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Change password</span></a>
@@ -36,49 +36,59 @@
                 </div>
                 <div class="body_box home1">
                     <div class="conten_body">
-                        <h1>app product</h1>
+                        <h1>app staff</h1>
                         <!-- kiem tra error -->
                         @error('msg')
                             <div class="error">
                                 {{$message}}
                             </div>
                         @enderror
-                        <form action="{{route('productRequest')}}" method="post" class="" enctype="multipart/form-data" id="addstaff">
+                        <form action="{{route('staffStore')}}" method="post" class="" enctype="multipart/form-data" id="addstaff">
                             <div class="form">
-                                <div class="nameinput">ten san pham</div>
-                                <input type="text" name="name_pd" class="input_user">
-                                @error('name_pd')
+                                <div class="nameinput">ten nhan vien</div>
+                                <input type="text" name="name" class="input_user">
+                                @error('name')
                                     <span class="error">{{$message}}</span>
                                 @enderror
-                                <div class="nameinput">so luong san pham con</div>
-                                <input type="text" name="quantity_pd" class="input_user">
-                                @error('quantity_pd')
+                                <div class="nameinput">email nhan vien</div>
+                                <input type="email" name="email" class="input_user">
+                                @error('email')
                                     <span class="error">{{$message}}</span>
                                 @enderror
-                                <div class="nameinput">so luong san pham da ban</div>
-                                <input type="text" name="sold_pd" class="input_user">
-                                @error('sold_pd')
+                                <div class="nameinput">chuc vu nhan vien</div>
+                                <input type="text" name="position" class="input_user">
+                                @error('position')
                                     <span class="error">{{$message}}</span>
                                 @enderror
-                                <div class="nameinput">hinh anh san pham da ban</div>
-                                <input type="file" name="image_pd" class="input_user">
-                                @error('image_pd')
+                                <div class="nameinput">que quan nhan vien</div>
+                                <input type="text" name="place_of_birth" class="input_user">
+                                @error('place_of_birth')
                                     <span class="error">{{$message}}</span>
                                 @enderror
-                                <div class="nameinput">gia san pham</div>
-                                <input type="fload" name="price_pd" class="input_user">
-                                @error('price_pd')
+                                <div class="nameinput">nam sinh</div>
+                                <input type="year" name="year_of_birth" class="input_user">
+                                @error('year_of_birth')
                                     <span class="error">{{$message}}</span>
                                 @enderror
-                                <div class="nameinput">mo ta san pham</div>
-                                <input type="text" name="describe_pd" class="input_user">
-                                @error('describe_pd')
+                                <div class="nameinput">image nhan vien</div>
+                                <input type="file" name="image" class="input_user">
+                                @error('image')
+                                    <span class="error">{{$message}}</span>
+                                @enderror
+                                <div class="nameinput">phone</div>
+                                <input type="text" name="phone" class="input_user">
+                                @error('password')
+                                    <span class="error">{{$message}}</span>
+                                @enderror
+                                <div class="nameinput">password</div>
+                                <input type="text" name="password" class="input_user">
+                                @error('password')
                                     <span class="error">{{$message}}</span>
                                 @enderror
                                 <input type="hidden" name="_method" value="post" class="hear_f">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}" class="tk">
                             </div>
-                            <button type="submit" class="btn_input">add product</button>
+                            <button type="submit" class="btn_input">add staff</button>
                         </form>
                     </div>
                 </div>

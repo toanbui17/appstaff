@@ -7,78 +7,54 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 //use staff model
-use App\Models\Staff;
+use App\Models\User;
 
 //use login request
 use App\Http\Requests\Staff\LoginRequest;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Contracts\Session\Session;
+//dung de kiiwm ta login
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    private $Staffs;
 
-    public function __construct() {
-        $this->Staffs = new Staff();
-    }
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //index view login
-        $title ='login';
+        $title  ='login';
         return view('form.login.form_login',['title'=>$title]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(LoginRequest $request)
+    public function login(Request $request)
     {
-        //dang nhap va kiem tra dang nhap
-        //$data = $request->validated();
-        $pwdt = Hash::make($request->password);
-        dd($pwdt);
-        die;
-
+        //dd(User::all());=
+        $credentials = [
+            'email'      => $request->email,
+            'password'   => $request->password,
+        ];
+        // dd($credentials);
+        // die;
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+ 
+           return redirect()->intended('home');
+        }
+ 
+        return back()->withErrors([
+            'msg'      => 'passwoed or email fales.',
+        
+        ])->onlyInput('email');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    //log out
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+    public function logout(){
+        Session::flush();
+        Auth::logout();
+        return redirect()->route('home');
     }
 }

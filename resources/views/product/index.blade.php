@@ -71,7 +71,7 @@
                                             <td>{{$it->describe_pd}}</td>
                                             <td>{{$it->created_at}}</td>
                                             <td>{{$it->updated_at}}</td>
-                                            <td><a href="" class="delete">delete</a></td>
+                                            <td><a href="{{route('productDelete',['id'=>$it->id])}}" class="delete">delete</a></td>
                                             <td><a href="{{route('productEdit',['id'=>$it->id])}}" class="edit">edit</a></td>
                                         </tr>
                                         @endforeach

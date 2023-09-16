@@ -10,7 +10,7 @@
                 <h3 class="category_hearder">staff</h3>
                 <ul class="list_category">
                     <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Create an account</span></a>
+                        <a href="{{route('staffAdd')}}" class="category_link"><span class="category_name">Create an account</span></a>
                     </li>
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Change password</span></a>

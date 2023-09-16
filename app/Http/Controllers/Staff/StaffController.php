@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 //use model staff mvc
 use App\Models\staff;
 
+use App\Http\Requests\Admin\StaffRequest;
+use App\Models\Staff as ModelsStaff;
 
 class StaffController extends Controller
 {
@@ -19,6 +21,7 @@ class StaffController extends Controller
     //khoi tao doi tuong staff
     public function __construct() {
         $this->staff = new staff();
+
     }
     /**
      * Display a listing of the resource.
@@ -26,7 +29,10 @@ class StaffController extends Controller
     public function index()
     {
         $title = 'staff';
-        $data = $this->staff->getAllStaff();
+        $data = staff::all();
+
+        // dd($data);
+        // die;
         
         return view('staff.index',['title'=>$title,'data'=>$data]);
 
@@ -38,7 +44,9 @@ class StaffController extends Controller
     public function create()
     {
         //get add staff
-        return view('');
+        $title = 'staff-add';
+
+        return view('form.staff.form_add',['title'=>$title]);
     }
 
     /**
@@ -46,7 +54,25 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //insert staff
+        // $Post = $this->staff;
+        // $Post->name = $request->name;
+        // $Post->email = $request->email;
+        // $Post->position = $request->position;
+        // $Post->place_of_birth = $request->place_of_birth;
+        // $Post->year_of_birth = $request->year_of_birth;
+        // $Post->phone = $request->phone;
+        // $Post->image = $request->image;
+        // $Post->password = $request->password;
+
+        // $post= $this->staff->seve();
+
+        $data = $request->all();
+        $post = staff::create($data);
+
+        print($post);
+        die;
+        
     }
 
     /**

@@ -103,7 +103,7 @@
 
 .category{
     margin: 0;
-    padding: 0 9rem;
+    /* padding: 0 9rem; */
     font-size: 2rem;
     display: flex;
     color: var(--text-color);
@@ -118,7 +118,7 @@
 
 .category_list{
     background-color: var(--white-color);
-    margin: 3rem 0.5rem;
+    margin: 2rem 0.5rem;
     padding: 0.5rem 0;
     border-radius: 0.2rem;
 }
@@ -150,7 +150,7 @@
 }
 
 .category_name{
-    
+
 }
 .so{
     padding-right: 6.5rem;
@@ -166,6 +166,10 @@
 
 .conten_box{
     
+}
+.conten_name{
+    font-size: 2rem;
+    color: var(--white-color);
 }
 
 .body_box{
@@ -183,7 +187,6 @@
 
 }
 th{
-    padding: 0 2rem;
     border: 1px solid var(--black-color);
     margin: 0;
 }
@@ -317,4 +320,66 @@ td{
 }
 .body_login{
 
+}
+
+/*layout admin*/
+.header_ad{
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--white-color);
+}
+.navbar_ad{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0rem;
+    font-size: 2rem;
+}
+.navbar_list_ad{
+
+}
+.navbar_item_ad{
+
+}
+.navbar_icon_ad{
+
+}
+.start_ad{
+    display: flex;
+}
+.form_search_ad{
+    display: flex;
+    
+}
+.category_ad{
+    display: flex;
+    font-size: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding-bottom: 25%;
+}
+.category_list_ad{
+    width: 15%;
+    margin: 2rem 0.5rem;
+    background-color: var(--white-color);
+    padding: 0.5rem 0;
+    border-radius: 0.2rem;
+}
+.category_ad_list{
+    list-style: none;
+    padding: 0 1rem;
+}
+.category_conten_ad{
+    width: 100%;
+}
+.category_link_ad{
+    color: var(--text-color);
+    text-decoration: none;
+}
+.category_item_ad{
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.5rem;
+}
+.category_link_ad:hover{
+    color: var(--white-color);
+}
+.category_item_ad:hover{
+    background: rgba(0, 0, 0, 0.5);
 }

@@ -47,7 +47,7 @@
                                 <h3 class="slogan_search">Hay Tim Kiem Va Tan Huong </h3>
                                 <div class="form_search">
                                     <div class="search_name">
-                                        <input tytle="text" name="name_pd" class="search_label" placeholder=" Ten San Pham">
+                                        <input tytle="text" name="key_word" class="search_label" placeholder=" Ten San Pham">
                                     </div>
                                     <button role="button" tytle="submit" class="search_button">Tim Kiem</button>
                                 </div>
