@@ -21,9 +21,6 @@
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Edit information</span></a>
                     </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name so">Sign out</span></a>
-                    </li>
                 </ul>
             </div>
         </div>

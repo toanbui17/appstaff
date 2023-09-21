@@ -27,7 +27,9 @@
                         <div class="navbar_list_ad">
                             <div class="navbar_item_ad">
                                 <a href="" class="navbar_link iconlg">
-                                    <span class="navbar_icon_ad">Manager</span>
+                                    @if (Auth::check())
+                                    <span class="navbar_icon_ad">{{Auth::User()->name}}</span>
+                                    @endif
                                 </a>
                             </div>
                         </div>
@@ -53,12 +55,7 @@
             <div class="category_ad">
                 <div class="category_list_ad">
                     <ul class="category_ad_list">
-                        <a href="" class="category_link_ad">
-                            <li class="category_item_ad">
-                                tai khoan
-                            </li>
-                        </a>
-                        <a href="" class="category_link_ad">
+                        <a href="{{route('homeAdmin')}}" class="category_link_ad">
                             <li class="category_item_ad">
                                 tong quan 
                             </li>
@@ -88,31 +85,19 @@
                                 chinh sua thong tin 
                             </li>
                         </a>
-                        <a href="{{route('logOut')}}" class="category_link_ad">
-                            <li class="category_item_ad">
-                                dang xuat
-                            </li>
-                        </a>
+                        <li class="category-">
+                            <form action="{{route('logOut')}}" method="post">
+                                @csrf
+                                <button type="submit">
+                                    dang xuat
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 @yield('conten_ad')
             </div>
         </div>
-        {{-- <footer class="footer">
-            <div class="box_footer">
-                <div class="footer_list">
-                    <div class="footer_item">
-                        Gioi Thieu
-                    </div>
-                    <div class="footer_item">
-                        Thong Tin Lien He
-                    </div>
-                    <div class="footer_item">
-                        Ket Noi
-                    </div>
-                </div>
-            </div>
-        </footer> --}}
     </div>
 </body>
 </html>

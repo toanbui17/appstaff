@@ -21,9 +21,6 @@
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Edit information</span></a>
                     </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name so">Sign out</span></a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -54,6 +51,17 @@
                                 <label for="" class="name_input">tai khoan email</label>
                                 <input type="email" name="email" class="input_user" value="{{old('email')}}">
                                 @error('email')
+                                    <span class="error lg">{{$message}}</span>
+                                @enderror
+                                <div class="mb_3">
+                                    <label for="" class="name_input">lever</label>
+                                    <select name="lever" id="">
+                                        <option value=>lever </option>
+                                        <option value="1">lever 1</option>
+                                        <option value="2">lever 2</option>
+                                    </select>
+                                </div>
+                                @error('lever')
                                     <span class="error lg">{{$message}}</span>
                                 @enderror
                                 <label for="" class="name_input">mat khau</label>

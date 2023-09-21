@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 //usre models product mvc
 use App\Models\Product;
 
-//use form request product
-//use App\Http\Requests\Admin\ProductRequest;
-
 use Carbon\Carbon;
 
 
@@ -26,8 +23,7 @@ class ProductController extends Controller
         $title = 'product';
 
         //lay het data produc
-        $data = Product::where('id', '>', '0')
-        ->orderBy('created_at','desc')
+        $data = Product::orderBy('created_at','desc')
         ->limit(10)
         ->get();
 
@@ -60,21 +56,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $file               = $request->image_pd;
-        $filename           = 'company-logo-' . time() . '.' . $file->getClientOriginalExtension();
-        //$path = $file->storeAs('public/uload', $filename);
-        //Lưu file vào thư mục public/upload/
-		$destinationPath    = public_path('/upload');
-		$file->move($destinationPath, $filename);
 
         $request->validate([
             'name_pd'           => 'required|unique:product',
             'quantity_pd'       => 'required',
             'sold_pd'           => 'required',
-            'image_pd'          => 'image|mimes:jpg,bmp,png',
+            'image_pd'          => 'required|image|mimes:jpg,bmp,png',
             'price_pd'          => 'required',
-            'describe_pd'       => 'required',
+            'describe_pd'       => 'required',        
         ]);
+
+        $filename = rand().'.'.$request->image_pd->extension();
+        $request->image_pd->move(public_path('upload'),$filename);
 
         $product = new Product;
 
@@ -84,6 +77,7 @@ class ProductController extends Controller
         $product->image_pd      = $filename;
         $product->price_pd      = $request->price_pd;
         $product->describe_pd   = $request->describe_pd;
+
 
         $product->save();
 
@@ -108,19 +102,14 @@ class ProductController extends Controller
 
         if (!empty($id)) {
             $dataId = Product::find($id);
-            dd($dataId);
-            die;
-            //kiem tra con ton tai khong
-            if (!empty($dataId[$id])) {
-                $dataId = $dataId[$id];
-            }else{
-                return redirect()->route('product')->with('msg','san pham khong ton tai');
-            }
+
+            //get add product
+            return view('form.product.form_edit',['title'=>$title,'dataId'=>$dataId]);
+
         }else{    
             return redirect()->route('product')->with('msg','san pham khong ton tai');
         }
-        //get add product
-        //return view('form.product.form_edit',['title'=>$title,'dataId'=>$dataId]);
+
     }
 
     /**
@@ -129,6 +118,36 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        if(!empty($id)){
+
+        
+            $product = Product::find($id);
+          
+            $request->validate([
+                'name_pd'           => 'required',
+                'quantity_pd'       => 'required',
+                'sold_pd'           => 'required',
+                'image_pd'          => 'required|image|mimes:jpg,bmp,png',
+                'price_pd'          => 'required',
+                'describe_pd'       => 'required',
+            ]);
+  
+            $image                  = $request->file('image_pd');
+            $new_name               = rand().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('upload'), $new_name);
+
+            $product->name_pd       = $request->name_pd;
+            $product->quantity_pd   = $request->quantity_pd;
+            $product->sold_pd       = $request->sold_pd;
+            $product->image_pd      = $new_name;
+            $product->price_pd      = $request->price_pd;
+            $product->describe_pd   = $request->describe_pd;
+ 
+            $product->save();
+            return redirect()->route('product');
+        }else{
+            return redirect()->route('product')->with('msg','san pham da xoa');
+        }
     }
 
     /**
@@ -137,7 +156,9 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //xoa product
-        Product::deleteProduct($id);
+        $product = Product::find($id);
+        $product->delete();
+
         return redirect()->route('product')->with('msg','san pham da xoa');
     }
     

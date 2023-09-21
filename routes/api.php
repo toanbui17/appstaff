@@ -18,11 +18,9 @@ use App\Http\Controllers\Api\AdminController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::prefix('admin')->group(function(){
-    Route::get('/',[AdminController::class,'index'])->name('admin');
-});
+Route::resource('product', ProductController::class);
 

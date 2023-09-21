@@ -20,7 +20,7 @@ class Product extends Model
     protected $primarykey = 'id';
 
     //tu dong update created_at vaf updated_at
-    public $timestamps = false;
+    public $timestamps = true;
 
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';

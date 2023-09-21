@@ -14,9 +14,11 @@
             <div class="conten_body">
                 <p class="admin_body">wellcome to app database manager</p>
                 <!-- thong bao khong co quyen then vao data tai staffRequest -->
-                @if (session('msg'))
-                    <span class="error">{{session('msg')}}</span>
-                @endif
+                @error('msg')
+                <div class="error">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
         </div>
     </div>

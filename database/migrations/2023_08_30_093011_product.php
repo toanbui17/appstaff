@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('image_pd');
             $table->float('price_pd');
             $table->string('describe_pd');
-            $table->char('created_at',10);
-            $table->char('updated_at',10);
+            $table->char('created_at');
+            $table->char('updated_at');
         });
     }
 

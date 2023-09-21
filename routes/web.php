@@ -36,7 +36,7 @@ Route::prefix('home')->group(function(){
 });
 
 //admin
-Route::prefix('admin')->middleware('middlewareAuthAdmin')->group(function(){
+Route::prefix('admin')->middleware('middlewareAuthLogin')->group(function(){
     Route::get('/', [AdminController::class,'index'])->name('homeAdmin');
 });
 
@@ -53,14 +53,14 @@ Route::prefix('product')->group(function(){
     Route::get('/',[ProductController::class,'index'])->middleware('middlewareAuthLogin')->name('product');
     Route::get('keyword',[ProductController::class,'getName'])->name('productName');
 
-    Route::get('add', [ProductController::class,'create'])->middleware('middlewareAuthLogin')->name('productAdd');
-    Route::post('add',[ProductController::class,'store'])->middleware('middlewareAuthLogin')->name('productRequest');
+    Route::get('add', [ProductController::class,'create'])->middleware(['middlewareAuthLogin','middlewareAuthAdmin'])->name('productAdd');
+    Route::post('add',[ProductController::class,'store'])->middleware(['middlewareAuthLogin','middlewareAuthAdmin'])->name('productRequest');
     //product request
     //Route::post('add',[ProductController::class,'productValidate'])->middleware('middlewareAuthAdmin')->name('productValidate');
 
     //product edit
-    Route::get('edit{id}',[ProductController::class,'edit'])->middleware('middlewareAuthAdmin')->name('productEdit');
-    Route::post('edit{id}',[ProductController::class,'update'])->middleware('middlewareAuthAdmin')->name('productUpdate');
+    Route::get('edit{id}',[ProductController::class,'edit'])->middleware(['middlewareAuthLogin','middlewareAuthAdmin'])->name('productEdit');
+    Route::post('edit{id}',[ProductController::class,'update'])->middleware(['middlewareAuthLogin','middlewareAuthAdmin'])->name('productUpdate');
 
     //delete
     Route::get('delete{id}',[ProductController::class,'destroy'])->middleware('middlewareAuthAdmin')->name('productDelete');
@@ -71,10 +71,15 @@ Route::prefix('product')->group(function(){
 Route::prefix('login')->group(function(){
     Route::get('/',[AuthController::class,'index'])->name('login');
     Route::post('/',[AuthController::class,'authLogin'])->name('loginPost');
-    Route::get('out',[AuthController::class,'authLogout'])->middleware('middlewareAuthAdmin')->name('logOut');
+    Route::post('out',[AuthController::class,'authLogout'])->middleware('middlewareAuthLogin')->name('logOut');
+
+    Route::get('forgetpassword',[AuthController::class,'forGetPassword'])->name('forgetPassword');
+    Route::post('forpostpassword',[AuthController::class,'forPostPassword'])->name('forpostPassword');
+    Route::get('getpassword/{user}/{token}',[AuthController::class,'getPassword'])->name('getPassword');
+    Route::post('postpassword/{user]/{token}',[AuthController::class,'postPassword'])->name('postPassword');
 });
 
-Route::middleware('middlewareAuthLogin')->prefix('auth')->group(function(){
+Route::middleware(['middlewareAuthLogin','middlewareAuthAdmin'])->prefix('auth')->group(function(){
     Route::get('create',[AuthController::class,'create'])->name('create');
     Route::post('create',[AuthController::class,'createAuth'])->name('createAuth');
 

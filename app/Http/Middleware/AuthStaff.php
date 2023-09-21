@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthStaff
@@ -16,17 +17,11 @@ class AuthStaff
     public function handle(Request $request, Closure $next, ): Response
     {
         
-        if($this->islogin()){
-            $ad = 'toan bui auth staff login';
-            echo $ad;
+        if(Auth::user()->laver == 1 || Auth::user()->laver == 0){
             //return redirect(route('home',['ad'=>$ad]));
+            return $next($request);
         }else{
             return redirect(route('home.login'));
         }
-        return $next($request);
-    }
-
-    public function islogin(){
-        return true;
     }
 }

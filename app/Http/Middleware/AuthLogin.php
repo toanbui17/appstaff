@@ -19,7 +19,9 @@ class AuthLogin
         if(Auth::check()){
             return $next($request);
         }else{
-            return redirect(route('login'));
+            return back()->withErrors([
+                'msg'       =>'tai khoan chua duoc kich hoat',
+            ]);
         }
     }
 }
