@@ -26,8 +26,8 @@
                         </div>
                         <div class="navbar_list_ad">
                             <div class="navbar_item_ad">
-                                <a href="" class="navbar_link iconlg">
-                                    @if (Auth::check())
+                                @if (Auth::check())
+                                <a href="{{route('adminInformation',['id'=>Auth::User()->id])}}" class="navbar_link iconlg">
                                     <span class="navbar_icon_ad">{{Auth::User()->name}}</span>
                                     @endif
                                 </a>
@@ -75,12 +75,12 @@
                                 nhan vien
                             </li>
                         </a>
-                        <a href="" class="category_link_ad">
+                        <a href="{{route('changePassword')}}" class="category_link_ad">
                             <li class="category_item_ad">
                                 thay doi mat khau
                             </li>
                         </a>
-                        <a href="" class="category_link_ad">
+                        <a href="{{route('editPersonnel',['id'=>Auth::user()->id])}}" class="category_link_ad">
                             <li class="category_item_ad">
                                 chinh sua thong tin 
                             </li>

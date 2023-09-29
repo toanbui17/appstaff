@@ -15,9 +15,9 @@
                 <p class="admin_body">wellcome to app database manager</p>
                 <!-- thong bao khong co quyen then vao data tai staffRequest -->
                 @error('msg')
-                <div class="error">
-                    {{$message}}
-                </div>
+                    <div class="error lg">
+                        {{$message}}
+                    </div>
                 @enderror
             </div>
         </div>

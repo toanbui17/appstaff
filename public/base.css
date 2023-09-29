@@ -45,8 +45,20 @@ html{
 }
 .error{
     display: flex;
+    min-width: 30rem;
+    width: 70%;
     margin: 0 15%;
     color: #D63301;
     background-color: #FFCCBA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
+
+.good{
+    display: flex;
+    min-width: 30rem;
+    width: 70%;
+    margin: 0 15%;
+    color: #D63301;
+    background-color: #baffbc;
     background-image: url('https://i.imgur.com/GnyDvKN.png');
 }

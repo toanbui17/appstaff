@@ -33,7 +33,7 @@ class HomeController extends Controller
 
         $title = 'san pham';
 
-        $data = $this->Products->getAllProduct();
+        $data = Product::orderBy('created_at','desc')->get();
 
         return view('home.home_showProduct',['title'=>$title,'data'=>$data]);
     }

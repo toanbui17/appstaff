@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Personnel;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -22,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -31,6 +34,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+    
     }
 
     /**
@@ -47,15 +51,55 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         //
+        $title = 'chinh sua thong tin';
+        $dataJoin = User::find($id);
+        $idAc = Personnel::find($id);
+        //dd($idAc);
+        if (!empty($idAc)) {
+            return view('form.admin.form_editInformation',['title'=>$title,'dataJoin'=>$dataJoin]);
+        }else{
+            return redirect()->route('homeAdmin')->with('msg','user chua duoc cap nhat!');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    //     $personnel  = Personnel::find($id);
+
+    //     $request->validate([
+    //         'name'=>'required',
+    //         'email'=>'required',
+    //         'password'=>'required',
+    //         'status'=>'required',
+    //         'office'=>'required',
+    //         'lever'=>'required',
+    //         'age'=>'required',
+    //         'image'=>'required\image|mimes:jpg,bmp,png',
+    //         'number_phone'=>'required',
+    //         'address'=>'required'
+    //     ]);
+
+    //     $image                  = $request->file('image_pd');
+    //     $new_name               = rand().'.'.$image->getClientOriginalExtension();
+    //     $image->move(public_path('upload'), $new_name);
+    
+    //     $personnel->users_id = Auth::user()->id;
+    //     $personnel-> = $request->;
+    //     $personnel-> = $request->;
+    //     $personnel-> = $request->;
+    //     $personnel-> = $request->;
+    //     $personnel-> = $request->;
+    //     $personnel-> = $request->;
+    //     $personnel-> = $request->;
+    //     $personnel-> = $request->;
+    //     $personnel-> = $request->;
+    //     $personnel-> = $request->;
+
+    // }
 
     /**
      * Remove the specified resource from storage.

@@ -40,7 +40,7 @@
                                             <td>{{$it->name_pd}}</td>
                                             <td>{{$it->quantity_pd}}</td>
                                             <td>{{$it->sold_pd}}</td>
-                                            <td>{{$it->image_pd}}</td>
+                                            <td><img src="/upload/{{$it->image_pd}}" alt="" width="100" height="100"></td>
                                             <td>{{$it->price_pd}}</td>
                                             <td>{{$it->describe_pd}}</td>
                                             <td>{{$it->created_at}}</td>

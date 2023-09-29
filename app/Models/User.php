@@ -21,7 +21,8 @@ class User extends Authenticatable
     protected $primarykey = 'id';
 
     //tu dong update created_at vaf updated_at
-    public $timestamps = false;
+    public $timestamps = true;
+    //rang buoc chi duoc lay truong trong khai bao
     protected $fillable = [
         'name',
         'email',
@@ -30,6 +31,11 @@ class User extends Authenticatable
         'status',
         'token',
     ];
+
+    //users join voi personnels users.id = personnels.id_user
+    public function personnel(){
+        return $this->hasOne(Personnel::class, 'user_id','id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

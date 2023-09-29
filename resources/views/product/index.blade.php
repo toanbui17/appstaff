@@ -13,7 +13,7 @@
                         <a href="{{route('productAdd')}}" class="category_link"><span class="category_name">Create a product</span></a>
                     </li>
                     <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Change password</span></a>
+                        <a href="" class="category_link"><span class="category_name">update a product</span></a>
                     </li>
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Forgot password</span></a>
@@ -63,13 +63,14 @@
                                             <td>{{$it->name_pd}}</td>
                                             <td>{{$it->quantity_pd}}</td>
                                             <td>{{$it->sold_pd}}</td>
-                                            <td>{{$it->image_pd}}</td>
+                                            <td><img src="/upload/{{$it->image_pd}}" alt="" width="100" height="100"></td>
                                             <td>{{$it->price_pd}}</td>
                                             <td>{{$it->describe_pd}}</td>
                                             <td>{{$it->created_at}}</td>
                                             <td>{{$it->updated_at}}</td>
                                             <td><a href="{{route('productDelete',['id'=>$it->id])}}" class="delete">delete</a></td>
                                             <td><a href="{{route('productEdit',['id'=>$it->id])}}" class="edit">edit</a></td>
+                                            <td><a href="{{route('productId',['id'=>$it->id])}}" class="edit">view</a></td>
                                         </tr>
                                         @endforeach
                                         @else

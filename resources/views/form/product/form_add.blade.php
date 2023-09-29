@@ -13,7 +13,7 @@
                         <a href="{{route('productAdd')}}" class="category_link"><span class="category_name">Create a product</span></a>
                     </li>
                     <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Change password</span></a>
+                        <a href="" class="category_link"><span class="category_name">update a product</span></a>
                     </li>
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Forgot password</span></a>

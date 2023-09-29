@@ -16,7 +16,15 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return 'index product api';
+        $product = Product::all();
+
+        $arr = [
+            'status'    => true,
+            'message'   => 'da lay san pham thanh cong',
+            'data'      => ProductResource::collection($product),
+        ];
+
+        return response()->json($arr,200);
     }
 
     /**
@@ -62,16 +70,20 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
-        $product = Product::find($id);
-  
-        $arr = [
-            'status' => true,
-            'message' => 'da lay san pham thanh cong',
-            'data' => ProductResource::collection($product),
-        ];
+        $product        = Product::find($id);
 
-        return response()->json($arr,200);
+        if (is_null($product)) {
+            return response()->json('khong co san pham nay');
+        }else{
+      
+            $arr = [
+                'status'    => true,
+                'message'   => 'da lay san pham thanh cong',
+                'data'      => new ProductResource($product),
+            ];
+    
+            return response()->json($arr,200);
+        }
     }
 
     /**
@@ -89,7 +101,7 @@ class ProductController extends Controller
             'price_pd'          => 'required',
             'describe_pd'       => 'required',  
         ]);
-        $filename = rand().'.'.$request->image_pd->extension();
+        $filename   = rand().'.'.$request->image_pd->extension();
         $request->image_pd->move(public_path('upload'),$filename);
 
         $product->name_pd       = $request->name_pd;
@@ -102,9 +114,9 @@ class ProductController extends Controller
         $product->save();
 
         $arr = [
-            'status' => true,
-            'message' => 'da luu san pham thanh cong',
-            'data' => ProductResource::collection($product),
+            'status'    => true,
+            'message'   => 'da luu san pham thanh cong',
+            'data'      => ProductResource::collection($product),
         ];
 
         return response()->json($arr,200);
@@ -117,5 +129,11 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
+        $product = Product::findOrFail($id);
+        if($product)
+           $product->delete(); 
+        else
+            return response()->json(401);
+        return response()->json('xoa thanh cong',200); 
     }
 }

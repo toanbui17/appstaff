@@ -10,7 +10,7 @@
                 <h3 class="category_hearder">account</h3>
                 <ul class="list_category">
                     <li class="category_item">
-                        <a href="{{route('staffAdd')}}" class="category_link"><span class="category_name">Create an account</span></a>
+                        <a href="{{route('create')}}" class="category_link"><span class="category_name">Create an account</span></a>
                     </li>
                     <li class="category_item">
                         <a href="" class="category_link"><span class="category_name">Change password</span></a>
@@ -57,8 +57,10 @@
                                     <label for="" class="name_input">lever</label>
                                     <select name="lever" id="">
                                         <option value=>lever </option>
-                                        <option value="1">lever 1</option>
-                                        <option value="2">lever 2</option>
+                                        <option value="0">lever 0 (Giam Doc)</option>
+                                        <option value="1">lever 1 (Truong Phong HCNS)</option>
+                                        <option value="2">lever 2 (KD)</option>
+                                        <option value="3">lever 3 (HCNS)</option>
                                     </select>
                                 </div>
                                 @error('lever')

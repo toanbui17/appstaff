@@ -35,8 +35,8 @@ class ProductController extends Controller
 
         $title = 'produc '.$request->all()['key_word'];
 
-        $name = $request->all()['key_word'];
-        $dataName = Product::where('name_pd','like',"%$name%")->orderBy('created_at','desc')->get();
+        $name       = $request->all()['key_word'];
+        $dataName   = Product::where('name_pd','like',"%$name%")->orderBy('created_at','desc')->get();
         return view('home.home_nameProduct',['title'=>$title,'dataName'=>$dataName]);
     }
 
@@ -46,7 +46,7 @@ class ProductController extends Controller
     public function create()
     {
         //ten trang
-        $title = 'add_product';
+        $title  = 'add_product';
         //get add product
         return view('form.product.form_add',['title'=>$title]);
     }
@@ -87,9 +87,19 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $title = 'product '.$id;
+
+        if (!empty($id)) {
+            $dataId = Product::find($id);
+            return view('product.product_id',['title'=>$title,'dataId'=>$dataId]);
+
+        }else{    
+            return redirect()->route('product')->with('msg','san pham khong ton tai');
+        }
+
     }
 
     /**
@@ -101,7 +111,7 @@ class ProductController extends Controller
         $title = 'edit_product';
 
         if (!empty($id)) {
-            $dataId = Product::find($id);
+            $dataId     = Product::find($id);
 
             //get add product
             return view('form.product.form_edit',['title'=>$title,'dataId'=>$dataId]);
@@ -119,9 +129,8 @@ class ProductController extends Controller
     {
         //
         if(!empty($id)){
-
         
-            $product = Product::find($id);
+            $product    = Product::find($id);
           
             $request->validate([
                 'name_pd'           => 'required',
@@ -134,7 +143,7 @@ class ProductController extends Controller
   
             $image                  = $request->file('image_pd');
             $new_name               = rand().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('upload'), $new_name);
+            $name                   = $image->move(public_path('upload'), $new_name);
 
             $product->name_pd       = $request->name_pd;
             $product->quantity_pd   = $request->quantity_pd;
@@ -142,6 +151,8 @@ class ProductController extends Controller
             $product->image_pd      = $new_name;
             $product->price_pd      = $request->price_pd;
             $product->describe_pd   = $request->describe_pd;
+
+            dd($product);
  
             $product->save();
             return redirect()->route('product');
@@ -156,7 +167,7 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //xoa product
-        $product = Product::find($id);
+        $product    = Product::find($id);
         $product->delete();
 
         return redirect()->route('product')->with('msg','san pham da xoa');

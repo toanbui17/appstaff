@@ -383,3 +383,22 @@ td{
 .category_item_ad:hover{
     background: rgba(0, 0, 0, 0.5);
 }
+
+/*view information*/
+.staff_tb{
+    padding: 1rem;
+    text-align: initial;
+}
+.user_cl{
+
+}
+.user_if{
+
+}
+.title_data{
+    background: rgb(83, 83, 85);
+    color: var(--white-color);
+}
+.data_user{
+
+}

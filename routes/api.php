@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 //use controller
 use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\Api\AdminController;
+//use App\Http\Controllers\Api\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +18,9 @@ use App\Http\Controllers\Api\AdminController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 Route::resource('product', ProductController::class);
 

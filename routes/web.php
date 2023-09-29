@@ -38,13 +38,9 @@ Route::prefix('home')->group(function(){
 //admin
 Route::prefix('admin')->middleware('middlewareAuthLogin')->group(function(){
     Route::get('/', [AdminController::class,'index'])->name('homeAdmin');
-});
-
-//staff
-Route::prefix('staff')->group(function(){
-    Route::get('/',[StaffController::class,'index'])->middleware('middlewareAuthLogin')->name('staff');
-    Route::get('add',[StaffController::class,'create'])->middleware('middlewareAuthLogin')->name('staffAdd');
-    Route::post('add',[StaffController::class,'store'])->middleware('middlewareAuthLogin')->name('staffStore');
+    Route::get('id={id}', [AuthController::class,'userJoinPersonnel'])->name('adminInformation');
+    Route::get('changepassword', [AuthController::class,'changePassword'])->name('changePassword');
+    Route::post('changePassword', [AuthController::class,'updatePassword'])->name('updatePassword');
 
 });
 
@@ -52,6 +48,7 @@ Route::prefix('staff')->group(function(){
 Route::prefix('product')->group(function(){
     Route::get('/',[ProductController::class,'index'])->middleware('middlewareAuthLogin')->name('product');
     Route::get('keyword',[ProductController::class,'getName'])->name('productName');
+    Route::get('id={id}',[ProductController::class,'show'])->name('productId');
 
     Route::get('add', [ProductController::class,'create'])->middleware(['middlewareAuthLogin','middlewareAuthAdmin'])->name('productAdd');
     Route::post('add',[ProductController::class,'store'])->middleware(['middlewareAuthLogin','middlewareAuthAdmin'])->name('productRequest');
@@ -83,4 +80,8 @@ Route::middleware(['middlewareAuthLogin','middlewareAuthAdmin'])->prefix('auth')
     Route::get('create',[AuthController::class,'create'])->name('create');
     Route::post('create',[AuthController::class,'createAuth'])->name('createAuth');
 
+});
+
+Route::middleware(['middlewareAuthLogin'])->prefix('personnel')->group(function(){
+    Route::get('edit{id}',[AdminController::class,'edit'])->name('editPersonnel');
 });
