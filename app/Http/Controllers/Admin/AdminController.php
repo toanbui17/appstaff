@@ -23,26 +23,102 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function allPersonnel()
     {
-
+        $title = 'personnel';
+        $dataUser = User::all();
+        return view('staff.index',['title'=>$title,'dataUser'=>$dataUser]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function show($id){
+        $title = 'personnel';
+        $dataUser = User::find($id);
+        return view('staff.personnel',['title'=>$title,'dataUser'=>$dataUser]);
+    }
     
-    }
-
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function createPersonnel(string $id)
     {
         //
+        $title = 'add_personnel';
+        $dataUser = User::find($id);
+        return view('form.admin.form_addUser',['title'=>$title,'dataUser'=>$dataUser]);
+    }
+    
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request, $id)
+    {
+        //
+        $dataUserId = User::find($id);
+        
+        $request->validate([
+            'office'            =>'required',
+            'age'               =>'required',
+            'image'             =>'required',
+            'number_phone'      =>'required|min:10|max:10',
+            'address'           =>'required',
+        ]);
+        
+        $image                  = $request->file('image');
+        $new_name               = rand().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('upload'), $new_name);
+
+        $personnel = new Personnel;
+
+        $personnel->office          = $request->office;
+        $personnel->age             = $request->age;
+        $personnel->image           = $new_name;
+        $personnel->number_phone    = $request->number_phone;        
+        $personnel->address         = $request->address;
+        $personnel->user_id         = $dataUserId->id; 
+        
+        $personnel->save();
+        return back()->with('msg','da tao thanh cong tai khoan');
+
+    }
+
+    public function editPersonnel(string $id)
+    {
+        //
+        $title = 'edit_personnel';
+        $dataUser = User::find($id);
+
+        if (!empty($dataUser)) {
+            return view('form.admin.form_editUser',['title'=>$title,'dataUser'=>$dataUser]);
+        }else{
+            return back()->with('msg','user chua duoc cap nhat!');
+        }
+    }
+
+    public function updatePersonnel(Request $request, $id){
+        
+        $dataUpdate = Personnel::find($id);
+        
+        $request->validate([
+            'office'            =>'required',
+            'age'               =>'required',
+            'image'             =>'required',
+            'number_phone'      =>'required|min:10|max:10',
+            'address'           =>'required',
+        ]);
+
+        $image                  = $request->file('image');
+        $new_name               = rand().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('upload'), $new_name);
+
+        $dataUpdate->office          = $request->office;
+        $dataUpdate->age             = $request->age;
+        $dataUpdate->image           = $new_name;
+        $dataUpdate->number_phone    = $request->number_phone;        
+        $dataUpdate->address         = $request->address;
+
+        $dataUpdate->save();
+        return back()->with('good','da update thanh cong tai khoan');
     }
 
     /**
@@ -53,53 +129,14 @@ class AdminController extends Controller
         //
         $title = 'chinh sua thong tin';
         $dataJoin = User::find($id);
-        $idAc = Personnel::find($id);
+        //$idAc = Personnel::find($id);
         //dd($idAc);
-        if (!empty($idAc)) {
+        if (!empty($dataJoin)) {
             return view('form.admin.form_editInformation',['title'=>$title,'dataJoin'=>$dataJoin]);
         }else{
-            return redirect()->route('homeAdmin')->with('msg','user chua duoc cap nhat!');
+            return back()->with('msg','user chua duoc cap nhat!');
         }
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    //     $personnel  = Personnel::find($id);
-
-    //     $request->validate([
-    //         'name'=>'required',
-    //         'email'=>'required',
-    //         'password'=>'required',
-    //         'status'=>'required',
-    //         'office'=>'required',
-    //         'lever'=>'required',
-    //         'age'=>'required',
-    //         'image'=>'required\image|mimes:jpg,bmp,png',
-    //         'number_phone'=>'required',
-    //         'address'=>'required'
-    //     ]);
-
-    //     $image                  = $request->file('image_pd');
-    //     $new_name               = rand().'.'.$image->getClientOriginalExtension();
-    //     $image->move(public_path('upload'), $new_name);
-    
-    //     $personnel->users_id = Auth::user()->id;
-    //     $personnel-> = $request->;
-    //     $personnel-> = $request->;
-    //     $personnel-> = $request->;
-    //     $personnel-> = $request->;
-    //     $personnel-> = $request->;
-    //     $personnel-> = $request->;
-    //     $personnel-> = $request->;
-    //     $personnel-> = $request->;
-    //     $personnel-> = $request->;
-    //     $personnel-> = $request->;
-
-    // }
 
     /**
      * Remove the specified resource from storage.

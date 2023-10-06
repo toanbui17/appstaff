@@ -79,9 +79,15 @@ Route::prefix('login')->group(function(){
 Route::middleware(['middlewareAuthLogin','middlewareAuthAdmin'])->prefix('auth')->group(function(){
     Route::get('create',[AuthController::class,'create'])->name('create');
     Route::post('create',[AuthController::class,'createAuth'])->name('createAuth');
-
+    
+    Route::get('personnel', [AdminController::class,'allPersonnel'])->name('personnel');
+    Route::get('personnel{id}',[AdminController::class,'show'])->name('personnelId');
+    Route::get('add/personnel{id}',[AdminController::class,'createPersonnel'])->name('addPersonnel');
+    Route::post('add/personnel{id}',[AdminController::class,'store'])->name('createPersonnel');
+    Route::get('edit/personnel{id}',[AdminController::class,'editPersonnel'])->name('editPersonnel');
+    Route::post('edit/personnel{id}',[AdminController::class,'updatePersonnel'])->name('updatePersonnel');
 });
 
 Route::middleware(['middlewareAuthLogin'])->prefix('personnel')->group(function(){
-    Route::get('edit{id}',[AdminController::class,'edit'])->name('editPersonnel');
+    Route::get('edit{id}',[AdminController::class,'edit'])->name('editUser');
 });

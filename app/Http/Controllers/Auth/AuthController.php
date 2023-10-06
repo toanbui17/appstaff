@@ -45,7 +45,7 @@ class AuthController extends Controller
         $auth->token    = Str::random(10);
 
         $auth->save();
-        return redirect(route('create'));
+        return back()->with('good','tai khoan da duoc tao!');
 
     }
 
@@ -130,15 +130,18 @@ class AuthController extends Controller
             'confirm_password'  =>'required|min:5|max:12',
         ]);
 
-        $user = Auth::user();
-        if (Auth::check($request->old_password, $user->password)) {
+        $user = auth()->user();
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors([
+                'msg'       =>'kiem tra lai password',
+            ])->onlyInput('old_password');
+                
+        }else{
             $user->update([
                 'password' => Hash::make($request->new_password)
             ]);
-            return redirect()->back()->with('good','password da duoc doi!');
-
-        }else{
-            return redirect()->back()->with('msg','hay chek password de cap nhat lai mat khai!');
+            return back()->withErrors(['good'=>'password da duoc doi!']);
+            
         }
         
 

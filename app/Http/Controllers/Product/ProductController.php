@@ -151,8 +151,6 @@ class ProductController extends Controller
             $product->image_pd      = $new_name;
             $product->price_pd      = $request->price_pd;
             $product->describe_pd   = $request->describe_pd;
-
-            dd($product);
  
             $product->save();
             return redirect()->route('product');

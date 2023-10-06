@@ -17,7 +17,7 @@
                         <div class="box_tb">
                             <div class="box_table">
                                 <div class="staff_tb">
-                                    @if(!empty($dataJoin))
+                                    @if(!empty($dataJoin->personnel->office))
                                     <div class="user_cl">
                                         <form action="" method="post" enctype="multipart/form-data">
                                             <div class="user_if">
@@ -34,8 +34,8 @@
                                                 <div class="title_data">so dien thoai nhan vien</div>
                                                 <input class="input_user"value="{{$dataJoin->personnel->number_phone}}">
                                                 <div class="title_data">hinh anh nhan vien</div>
-                                                <input value="{{asset('/upload/'.$dataJoin->personnel->image)}}" type="file" class="input_user">
-                                                <input type="text" class="input_user" name="image" value="{{$dataJoin->personnel->image}}">
+                                                <input  type="file" class="input_user">
+                                                <input class="input_user" name="image" value="{{$dataJoin->personnel->image}}">
                                             </div>
                                             <div class="footer_updaate">
                                                 <button type="submit" class="upadte_user">update information</button>
@@ -43,7 +43,7 @@
                                         </form>
                                     </div>
                                     @else
-                                        <div class="data_nul" colspan="10">null</div>     
+                                        <div class="data_nul" colspan="10">user chua co thong tin</div>     
                                     @endif
                                 </div>
                             </div>

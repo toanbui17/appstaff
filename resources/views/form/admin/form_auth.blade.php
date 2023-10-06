@@ -5,26 +5,7 @@
 @section('conten_ad')
 <div class="container">
     <div class="category row">
-        <div class="category_box col-md-4">
-            <div class="category_list">
-                <h3 class="category_hearder">account</h3>
-                <ul class="list_category">
-                    <li class="category_item">
-                        <a href="{{route('create')}}" class="category_link"><span class="category_name">Create an account</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Change password</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Forgot password</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Edit information</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="category_conten col-md-8">
+        <div class="category_conten col-md-12">
             <div class="conten_box">
                 <div class="conten_hear">
                     <h3 class="conten_name">
@@ -39,6 +20,11 @@
                             <div class="error">
                                 {{$message}}
                             </div>
+                        @enderror
+                        @error('good')
+                        <div class="good">
+                            {{$message}}
+                        </div>
                         @enderror
                         <form action="{{route('createAuth')}}" method="post" class="">
                             @csrf

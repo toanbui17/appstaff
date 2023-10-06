@@ -70,7 +70,7 @@
                                 san pham
                             </li>
                         </a>
-                        <a href="" class="category_link_ad">
+                        <a href="{{route('personnel')}}" class="category_link_ad">
                             <li class="category_item_ad">
                                 nhan vien
                             </li>
@@ -80,7 +80,7 @@
                                 thay doi mat khau
                             </li>
                         </a>
-                        <a href="{{route('editPersonnel',['id'=>Auth::user()->id])}}" class="category_link_ad">
+                        <a href="{{route('editUser',['id'=>Auth::user()->id])}}" class="category_link_ad">
                             <li class="category_item_ad">
                                 chinh sua thong tin 
                             </li>

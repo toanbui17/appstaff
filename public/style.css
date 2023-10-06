@@ -118,7 +118,7 @@
 
 .category_list{
     background-color: var(--white-color);
-    margin: 2rem 0.5rem;
+    margin: 2.7rem 0.5rem;
     padding: 0.5rem 0;
     border-radius: 0.2rem;
 }
@@ -180,7 +180,7 @@
     border-radius: 0.2rem;
 }
 .home1{
-    margin: 0.5rem;
+    margin: 1rem 0.5rem;
 }
 
 .conten_body{
@@ -357,7 +357,7 @@ td{
 }
 .category_list_ad{
     width: 15%;
-    margin: 2rem 0.5rem;
+    margin: 2.7rem 0.5rem;
     background-color: var(--white-color);
     padding: 0.5rem 0;
     border-radius: 0.2rem;
@@ -398,7 +398,26 @@ td{
 .title_data{
     background: rgb(83, 83, 85);
     color: var(--white-color);
+    width: 60%;
 }
 .data_user{
 
+}
+
+.add_personnel{
+    text-align: initial;
+    padding: 2rem;
+}
+.mb_4{
+    text-align: left;
+    padding: 2rem;
+}
+.name_input_label{
+    color: rgb(4, 207, 14);
+}
+.input_user_name{
+    color: rgb(207, 126, 4);
+}
+.head_user_name{
+    text-align: center;
 }

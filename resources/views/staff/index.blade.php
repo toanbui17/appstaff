@@ -5,29 +5,7 @@
 @section('conten_ad')
 <div class="container">
     <div class="category row">
-        <div class="category_box col-md-4">
-            <div class="category_list">
-                <h3 class="category_hearder">staff</h3>
-                <ul class="list_category">
-                    <li class="category_item">
-                        <a href="{{route('create')}}" class="category_link"><span class="category_name">Create an account</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Create information for staff</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Create information for clien</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name">Edit information</span></a>
-                    </li>
-                    <li class="category_item">
-                        <a href="" class="category_link"><span class="category_name so">Sign out</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="category_conten col-md-8">
+        <div class="category_conten col-md-12">
             <div class="conten_box">
                 <div class="conten_hear">
                     <h3 class="conten_name">
@@ -44,31 +22,25 @@
                                             <th>stt</th>
                                             <th>ten nv</th>
                                             <th>email nv</th>
-                                            <th>chuc vu</th>
-                                            <th>noi sinh</th>
-                                            <th>nam sinh</th>
-                                            <th>so dt</th>
-                                            <th>hinh anh nv</th>
+                                            <th>lever</th>
                                             <th>ngay tao</th>
                                             <th>ngay sua</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if(!empty($data))
-                                            @foreach ($data as $key => $it)
+                                        @if(!empty($dataUser))
+                                            @foreach ($dataUser as $key => $it)
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{$it->name}}</td>
                                             <td>{{$it->email}}</td>
-                                            <td>{{$it->position}}</td>
-                                            <td>{{$it->place_of_birth}}</td>
-                                            <td>{{$it->year_of_birth}}</td>
-                                            <td>{{$it->phone}}</td>
-                                            <td><img src="/upload/{{$it->image}}" alt=""></td>
+                                            <td>{{$it->lever}}</td>
                                             <td>{{$it->created_at}}</td>
                                             <td>{{$it->updated_at}}</td>
-                                            <td>delete</td>
-                                            <td>edit</td>
+                                            <td><a href="{{route('addPersonnel',['id'=>$it->id])}}">create</a></td>
+                                            <td><a href="{{route('editPersonnel',['id'=>$it->id])}}" class="editPersonnel">edit</a></td>
+                                            <td><a href="" class="editPersonnel">delete</a></td>                                           
+                                            <td><a href="{{route('personnelId',['id'=>$it->id])}}" class="editPersonnel">view</a></td>
                                         </tr>
                                         @endforeach
                                         @else
